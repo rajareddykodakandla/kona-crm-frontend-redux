@@ -6,6 +6,12 @@ export default function(state = [], action){
             } else{
                 return state
             }
+        case "CREATE_LEAD":
+            if(action.payload.data){
+                return true
+            } else {
+                return false
+            }
         case "FAILURE":
             return state    
     }

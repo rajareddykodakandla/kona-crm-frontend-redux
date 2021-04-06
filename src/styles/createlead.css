@@ -1,4 +1,4 @@
-.content {
+.createleadcontent {
     position: relative;
     max-width: 500px;
     margin: auto;
@@ -6,6 +6,7 @@
     border-color: #252C48;
     padding: 10px;
     height: auto;
+    margin-top: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -27,7 +28,7 @@
     text-align: center;
 }
 
-.button {
+.createleadbutton {
     text-align: center;
     font-size: 25;
     height: 80px;
@@ -38,7 +39,4 @@
     color: #FFFFFF80;
 }
 
-.title {
-    margin-top: 60px;
-    height: 100px;
-}
+

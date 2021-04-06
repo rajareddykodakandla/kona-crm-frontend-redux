@@ -17,3 +17,25 @@ export const getAllLeads = (header) => {
         }
     }
 }
+
+export const createlead = (data) => {
+    return async function(dispatch){
+        try{
+            let token = sessionStorage.getItem("token")
+            const header = {
+                headers: { 'Authorization': `Bearer ${token}` }
+            }
+            let response = await axios.post(`${URL}createlead`, data, header);
+            console.log(response);
+            dispatch({
+                type:"CREATE_LEAD",
+                payload:null
+            })
+        } catch(err){
+            dispatch({
+                type:"FAILURE",
+                payload: err
+            })
+        }
+    }
+}

@@ -15,7 +15,7 @@ function Header() {
                 <Route path="/login" exact component={Login}></Route>
                 <Route path="/dashboard" exact component={Dashboard}></Route>
                 <Route path="/changepassword" exact component={ChangePassword}></Route>
-                
+                <Route path="/createlead" exact component={Createlead}></Route>
             </BrowserRouter>
         </div>
     )

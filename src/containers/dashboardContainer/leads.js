@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllLeads } from '../../actions/leads'
 import '../../styles/leads.css'
+import Createlead from './createlead'
 import Lead from './lead'
 
 export const Leads = (props) => {
     const dispatch = useDispatch()
     const allleads = useSelector(appState => appState.leads)
+    const leadcreated = useSelector(appState => appState.leads)
     const [state, setState] = useState({
         "listleads": true,
         "showlead": false,
+        "showcreatelead":false,
         "lead": {}
     })
-
+    
     useEffect(() => {
         let token = sessionStorage.getItem("token")
         const header = {
@@ -20,7 +23,7 @@ export const Leads = (props) => {
         }
         dispatch(getAllLeads(header));
     }, [])
-
+    
     const rendertable = () => {
         if (allleads.length > 0) {
             let leads = allleads.map(lead => {
@@ -30,28 +33,38 @@ export const Leads = (props) => {
         }
     }
 
-    const button = () => {
+    const backtoleads = () => {
         setState(previousState => ({
-            ...previousState, "showlead": false, "listleads": true
+            ...previousState, "showlead": false, "listleads": true, "showcreatelead":false
         }))
     }
-    return (
-        <div>
 
-            {/*state.showlead ? <div className="leadbtn">
-                    <button className="column btn btn-danger" onClick={button}>back</button>
-    </div> : null*/}
+    const createlead = () =>{
+        setState(previousState => ({
+            ...previousState, "showlead":false, "listleads":false, "showcreatelead":true
+        }))
+    }
+
+    return (
+        <React.Fragment>
+
+            {state.showcreatelead ? <Createlead history={props.history}></Createlead> : null}
+
+
             {state.showlead ? <div className="row">
                 <div className="leadbtn">
-                    <button className="column btn btn-danger" onClick={button}>back</button>
+                    <button className="column btn btn-danger" onClick={backtoleads}>back</button>
                 </div>
-                <Lead className="column" leadinfo={state.lead}> 
-                </Lead>
+                <Lead className="column" leadinfo={state.lead}></Lead>
             </div> : null}
 
-            {state.listleads ? <div className="tablecontent">
-                <div className="table-responsive">
-                    <table className="table">
+            {state.listleads ? <div>
+                <div className="tablecontent">
+                    <div className="leadbtn">
+                        <button className="btn btn-danger" onClick={createlead} >Create lead</button>
+                    </div>
+                    <div className="table-responsive">
+                    <table className="table leadstable">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -66,10 +79,11 @@ export const Leads = (props) => {
                         </tbody>
                     </table>
                 </div>
-            </div> : null}
-        </div>
+            </div>
+                
+            </div>: null}
+        </React.Fragment>
     )
 }
-
 
 export default Leads

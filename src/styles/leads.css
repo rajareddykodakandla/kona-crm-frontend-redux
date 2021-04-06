@@ -1,19 +1,18 @@
 .tablecontent {
-    width: 1000px;
-    margin-left: 250px;
+    width: 1050px;
+    margin-left: 30px;
     margin-top: 20px;
     color: #FEFEFE;
     background-color: #252C48;
-    height: 650px;
+    height: auto;
     border-radius: 8px;
     font-size: 18px;
 }
 
 .leadbtn{
-    width: 50px;
     color: white;
-    margin-top: 20px;
-    margin-left: 20px;
+    padding: 10px;
+    text-align: end;    
 }
 
 .row {
@@ -25,3 +24,7 @@
     padding: 10px;
     height: auto;
 }
+
+/* .leadstable{
+    margin-top: 50px;
+} */
