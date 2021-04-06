@@ -1,0 +1,27 @@
+.tablecontent {
+    width: 1000px;
+    margin-left: 250px;
+    margin-top: 20px;
+    color: #FEFEFE;
+    background-color: #252C48;
+    height: 650px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.leadbtn{
+    width: 50px;
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    padding: 10px;
+    height: auto;
+}
