@@ -4,7 +4,8 @@ import leadsReducer from './leads'
 
 const rootReducer = combineReducers({
   isUserLoggedIn:userReducer,
-  leads:leadsReducer
+  leads:leadsReducer,
+  leadCreated:leadsReducer
 });
 
 export default rootReducer;

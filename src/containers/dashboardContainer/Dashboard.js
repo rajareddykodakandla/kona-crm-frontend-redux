@@ -45,11 +45,29 @@ function Dashboard(props) {
                     <NavLink to="/dashboard" onClick={showleads}>Leads</NavLink>
                     <NavLink to="/dashboard">Report</NavLink>
                     <NavLink to="/dashboard">Settings</NavLink>
-
                     <NavLink to="/changepassword" onClick={changepass} >change password</NavLink>
                 </div>
 
             </div>
+            <nav className="  navbar p-0 " style={{ backgroundColor: "#252C488C" }}>
+                    <div className="ml-auto">
+                        <ul className="nav  ">
+                            
+                            <li className=" dropdown">
+                                <a className="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb4e20TkPI83rAuPy1VnpUQisoc0ZA8w5TJQ&usqp=CAU" alt="..." className="h-25 w-25 rounded-circle" />
+                                </a>
+                                <div className="dropdown-menu" >
+                                    <a className="dropdown-item" href="#" to="#">Profile</a>
+                                    <NavLink className="dropdown-item" href="#" to="/cahngepassword">Chnage password</NavLink>
+                                    <div className="dropdown-divider"></div>
+                                    <NavLink className="dropdown-item" href="# " to="#">Logout</NavLink>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
             {state.dashboard ? <div className="dashboard" >
                 <h1>Hello welcome to user Dashboard</h1>
             </div> : null}
@@ -59,15 +77,6 @@ function Dashboard(props) {
             {state.leads ? <div className="dashboard">
                 <Leads history={props.history}></Leads>
             </div> : null }
-            {/*this.state.dashboard ? <div className="dashboard" >
-                <h1>Hello welcome to user Dashboard</h1>
-            </div> : null}
-            {this.state.changepassword ? <div>
-                <ChangePassword props={this.props}></ChangePassword>
-            </div> : null}
-            {this.state.leads ? <div>
-                <Leads history={this.props.history}></Leads>
-            </div> : null*/}
         </div>
     )
 }

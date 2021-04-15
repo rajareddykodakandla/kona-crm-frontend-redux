@@ -7,20 +7,14 @@ import '../../styles/createlead.css'
 function Createlead(props) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     if(leadcreated === true){
-    //         console.log("It is true", lead)
-    //         //props.history.push("/dashboard")
-    //     }
-    // })
-
+    const leadcreated = useSelector(appState => appState.leadCreated);
+    
     const onSubmit = (data) => {
         console.log(data);
         dispatch(createlead(data));
     }
 
-    return (
+     return (
         <div>
             <React.Fragment>
                 <div className="container">
@@ -67,7 +61,7 @@ function Createlead(props) {
                 </div>
             </React.Fragment>
         </div>
-    )
+     )
 }
 
 export default Createlead

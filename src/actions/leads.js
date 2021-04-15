@@ -29,7 +29,50 @@ export const createlead = (data) => {
             console.log(response);
             dispatch({
                 type:"CREATE_LEAD",
-                payload:null
+                payload:response
+            })
+        } catch(err){
+            dispatch({
+                type:"FAILURE",
+                payload: err
+            })
+        }
+    }
+}
+
+export const removelead = (id) => {
+    return async function(dispatch){
+        try{
+            let token = sessionStorage.getItem("token")
+            const header = {
+                headers: { 'Authorization': `Bearer ${token}` }
+            }
+            let response = await axios.delete(`${URL}removelead/${id}`, header);
+            dispatch({
+                type:"REMOVE_LEAD",
+                payload:response
+            })
+        } catch(err){
+            dispatch({
+                type:"FAILURE",
+                payload: err
+            })
+        }
+    }
+}
+
+export const editlead = (id) => {
+    return async function(dispatch){
+        try{
+            let token = sessionStorage.getItem("token")
+            const header = {
+                headers: { 'Authorization': `Bearer ${token}` }
+            }
+            let response = await axios.put(`${URL}editlead/${id}`, header);
+            console.log(response);
+            dispatch({
+                type:"EDIT_LEAD",
+                payload:response
             })
         } catch(err){
             dispatch({

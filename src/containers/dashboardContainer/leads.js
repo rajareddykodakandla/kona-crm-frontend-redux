@@ -8,13 +8,21 @@ import Lead from './lead'
 export const Leads = (props) => {
     const dispatch = useDispatch()
     const allleads = useSelector(appState => appState.leads)
-    const leadcreated = useSelector(appState => appState.leads)
+    const leadcreated = useSelector(appState => appState.leadCreated)
     const [state, setState] = useState({
         "listleads": true,
         "showlead": false,
         "showcreatelead":false,
         "lead": {}
     })
+
+    useEffect(() => {
+        if(leadcreated === true){
+            setState(previousState => ({
+                ...previousState, "showlead": false, "listleads": true, "showcreatelead":false
+            }))
+        }
+    }, [leadcreated])
     
     useEffect(() => {
         let token = sessionStorage.getItem("token")
@@ -22,7 +30,7 @@ export const Leads = (props) => {
             headers: { 'Authorization': `Bearer ${token}` }
         }
         dispatch(getAllLeads(header));
-    }, [])
+    }, [state])
     
     const rendertable = () => {
         if (allleads.length > 0) {
@@ -47,16 +55,14 @@ export const Leads = (props) => {
 
     return (
         <React.Fragment>
-
-            {state.showcreatelead ? <Createlead history={props.history}></Createlead> : null}
-
-
             {state.showlead ? <div className="row">
                 <div className="leadbtn">
                     <button className="column btn btn-danger" onClick={backtoleads}>back</button>
                 </div>
                 <Lead className="column" leadinfo={state.lead}></Lead>
             </div> : null}
+
+            {state.showcreatelead ? <Createlead history={props.history}></Createlead> : null}
 
             {state.listleads ? <div>
                 <div className="tablecontent">
