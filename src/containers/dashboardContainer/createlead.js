@@ -12,10 +12,12 @@ function Createlead(props) {
     const onSubmit = (data) => {
         console.log(data);
         dispatch(createlead(data));
+        if(leadcreated){
+            props.history.push('/leads');
+        }
     }
 
      return (
-        <div>
             <React.Fragment>
                 <div className="container">
                     <div className="card createleadcontent">
@@ -60,7 +62,6 @@ function Createlead(props) {
                     </div>
                 </div>
             </React.Fragment>
-        </div>
      )
 }
 

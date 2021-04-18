@@ -24,6 +24,12 @@ export default function(state = [] || null, action){
             } else {
                 return false
             }
+        case "LEAD":
+            if(action.payload.data){
+                return state = action.payload.data
+            } else {
+                return state
+            }    
         case "FAILURE":
             return state    
     }

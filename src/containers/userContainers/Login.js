@@ -8,9 +8,12 @@ export default function Login(props) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const dispatch = useDispatch();
     const isUserLoggedIn = useSelector(appState => appState.isUserLoggedIn);
-    console.log(isUserLoggedIn)
+
     useEffect(() => {
-        if (isUserLoggedIn && sessionStorage.getItem("token")) {
+        console.log(isUserLoggedIn)
+        if (isUserLoggedIn) {
+            console.log(props)
+            console.log("user logged in successful")
             props.history.push("/dashboard");
         } 
     })

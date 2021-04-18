@@ -7,3 +7,12 @@
     margin-top: 20px;
     margin-left: 20px;
 }
+
+.dashboard {
+    margin-left: 220px;
+    margin-top: 0px;
+    height: 100vh;
+    background-color: #1B203A;
+    color: white;
+    overflow: hidden;
+}
