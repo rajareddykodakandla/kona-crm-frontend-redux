@@ -9,6 +9,12 @@ const Leads = (props) => {
     const isUserLoggedIn = useSelector(appState => appState.isUserLoggedIn)
 
     useEffect(() => {
+        if (!isUserLoggedIn) {
+            props.history.push("/login");
+        }
+    })
+
+    useEffect(() => {
         if (isUserLoggedIn) {
             let token = sessionStorage.getItem("token")
             const header = {
@@ -23,7 +29,7 @@ const Leads = (props) => {
     const rendertable = () => {
         if (allleads.length > 0) {
             let leads = allleads.map(lead => {
-                return <tr key={lead._id} onClick={() => { props.history.push(`/lead/${lead._id}`) }}><td>{lead.name}</td><td>{lead.phone}</td><td>{lead.email}</td><td>{lead.technology}</td><td>{lead.source}</td></tr>
+                return <tr key={lead._id} onClick={() => { props.history.push(`/lead/${lead._id}`) }}><td><input type="checkbox" /></td><td>{lead.name}</td><td>{lead.phone}</td><td>{lead.email}</td><td>{lead.technology}</td><td>{lead.source}</td></tr>
             })
             return leads
         }
@@ -44,6 +50,7 @@ const Leads = (props) => {
                         <table className="table leadstable">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Name</th>
                                     <th>Mobile Number</th>
                                     <th>Email</th>

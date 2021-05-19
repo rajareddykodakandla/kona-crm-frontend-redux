@@ -33,7 +33,7 @@
     .sidenav a {font-size: 18px;}
   }
   body{
-      overflow: hidden;
+      overflow-x: hidden;
   }
 
   

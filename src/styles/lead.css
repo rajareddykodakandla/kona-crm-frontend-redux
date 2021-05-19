@@ -3,7 +3,7 @@
     background-color: #252C48;
     border-radius: 8px;
     height: auto;
-    width: 800px;
+    width: 1100px;
     margin-top: 20px;
     margin-left: 20px;
 }
@@ -15,4 +15,21 @@
     background-color: #1B203A;
     color: white;
     overflow: hidden;
+}
+
+.wrapper {
+    width:100%;
+    margin : 0;
+}
+
+.first {
+    width:50%;
+    margin : 0;
+    float : left ;
+}
+
+.second {
+    width:50%;
+    margin : 0;
+    float : left ;
 }

@@ -23,6 +23,13 @@
     color: white;
 }
 
+.form select {
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+}
+
 .signin {
     color: white;
     text-align: center;

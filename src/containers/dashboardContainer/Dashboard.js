@@ -3,9 +3,30 @@ import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { getAllLeads } from '../../actions/leads'
 import "../../styles/Dashboard.css"
-import Barchart from '../canvasjscharts/Barchart'
+import CanvasJSReact from '../../assets/canvasjs.react'
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function Dashboard(props) {
+
+    const options = {
+        fontColor: "white",
+        backgroundColor: "#252C48",
+        title: {
+            fontColor: "white",
+            text: "Total leads"
+        },
+        data: [{
+            type: "pie",
+            dataPoints: [
+                { y: 32, label: "google ads", indexLabelFontColor: "white" },
+                { y: 22, label: "Inbound", indexLabelFontColor: "white" },
+                { y: 15, label: "Urbanpro", indexLabelFontColor: "white" },
+                { y: 19, label: "Sulekha", indexLabelFontColor: "white" },
+            ]
+        }]
+    }
+
     const dispatch = useDispatch()
     const isUserLoggedIn = useSelector(appState => appState.isUserLoggedIn);
     const leads = useSelector(appState => appState.leads);
@@ -20,7 +41,7 @@ function Dashboard(props) {
             }
             dispatch(getAllLeads(header));
         }
-    },[])
+    }, [])
 
     return (
         <div className="dashboard">
@@ -43,7 +64,7 @@ function Dashboard(props) {
                     </div>
                     <div className="col-sm-5">
                         <div className="border border-success" style={{ height: '300px' }}>
-                            <Barchart></Barchart>
+                            <CanvasJSChart options={options} />
                         </div>
                     </div>
                     <div className="col-sm-5">
